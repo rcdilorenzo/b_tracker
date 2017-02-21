@@ -64,4 +64,8 @@ defmodule Tracker do
         {:next_state, :locked, %{state | input_code: []}}
     end
   end
+
+  def handle_info({:gpio_interrupt, _pin, :rising}, event, state) do
+    {:next_state, event, state}
+  end
 end
